@@ -10,6 +10,9 @@ const displayFunctions = {
     "tableHeader": getRowHeaderItem
 };
 
+const checkboxBtn = document.getElementById("checkboxBtn");
+
+
 const headers = [[
     {
         value: "lp",
@@ -34,7 +37,7 @@ const headers = [[
     {
         value: "isSunRoof",
         label: "Sun Roof",
-        isVisible: true
+        isVisible: false
     },
     {
         value: "isAWD",
@@ -125,6 +128,30 @@ function generateSingleCar(index) {
         draw(cars, DOM.tableData, "table")
         draw(headers, DOM.tableHead, "tableHeader", false)
     })
+    checkboxBtn.addEventListener("change" , function(e){
+        if(headers[0][4].isVisible == true ) {
+            console.log("sunroof is off")
+            headers[0][4].isVisible = false
+            clearDOM()
+            draw(cars, DOM.tableData, "table")
+            draw(headers, DOM.tableHead, "tableHeader", false)
+            
+       }
+        else if(headers[0][4].isVisible == false) {
+            console.log("sunroof is on")
+            headers[0][4].isVisible = true
+            clearDOM()
+            draw(cars, DOM.tableData, "table")
+            draw(headers, DOM.tableHead, "tableHeader", false)
+    
+                }
+    })
+
+    
+
+  
+    
+
 
     searchOperation.addEventListener("click", function () {
         const value = document.getElementById("searchValue").value;
